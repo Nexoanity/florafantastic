@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key System Step 1</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .redirect-message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .loading-bar {
+            width: 100%;
+            background: #ddd;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+            display: none; /* Hide initially */
+        }
+        .loading-bar-inner {
+            width: 0;
+            height: 100%;
+            background: #4caf50;
+        }
+        .btn-confirm {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .btn-confirm:hover {
+            background-color: #45a049;
+        }
+        .btn-continue {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* Hidden until countdown completes */
+            margin-top: 20px;
+        }
+        .btn-continue:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <p class="redirect-message">You are being redirected to the next Linkvertise link. Please confirm you're not a bot.</p>
+        
+        <!-- Google reCAPTCHA -->
+        <div class="g-recaptcha" data-sitekey="6LdKXY8qAAAAACLfc9DHJHRezcBLYyuV3FqR72vq"></div>
+        
+        <!-- Confirm you're not a bot button -->
+        <button class="btn-confirm" id="confirmBtn">Confirm you're not a bot</button>
+        
+        <!-- Progress Bar -->
+        <div class="loading-bar" id="loadingBar">
+            <div class="loading-bar-inner"></div>
+        </div>
+
+        <!-- Continue Button -->
+        <button class="btn-continue" id="continueBtn">Continue</button>
+    </div>
+
+    <script>
+        var token = ""; // To store the dynamic token for each session
+        var mouseMoved = false; // To check if mouse has moved
+
+        // Function to generate a dynamic token
+        function generateToken() {
+            var date = new Date().getTime();
+            token = 'token_' + date; // Token is based on current time
+        }
+
+        // Detect mouse movement to prevent bots from bypassing
+        document.addEventListener("mousemove", function() {
+            mouseMoved = true;
+        });
+
+        // Wait for user to confirm they're not a bot
+        document.getElementById('confirmBtn').addEventListener('click', function() {
+            // Check if the reCAPTCHA is completed
+            var recaptchaResponse = grecaptcha.getResponse();
+            if (recaptchaResponse.length === 0) {
+                alert('Please confirm that you are not a bot!');
+                return;
+            }
+
+            // Check if mouse movement was detected
+            if (!mouseMoved) {
+                alert('Please move your mouse to prove you are a human!');
+                return;
+            }
+
+            // Generate a dynamic token for this session
+            generateToken();
+
+            // Hide the confirm button after it's clicked
+            document.getElementById('confirmBtn').style.display = 'none';
+            
+            // Show the loading bar
+            var loadingBar = document.getElementById('loadingBar');
+            loadingBar.style.display = 'block';
+            
+            // Animate the progress bar
+            var progressBar = document.querySelector('.loading-bar-inner');
+            progressBar.style.animation = 'load 3s linear forwards';
+
+            // Simulate the Linkvertise antibypassing timer (typically 5 seconds or more)
+            setTimeout(function() {
+                // After the countdown, show the Continue button
+                document.getElementById('continueBtn').style.display = 'inline-block';
+            }, 3000); // Show the Continue button after 3 seconds
+        });
+
+        // Trigger the actual redirection when Continue button is clicked
+        document.getElementById('continueBtn').addEventListener('click', function() {
+            // Add token to URL as a query parameter to ensure it's valid
+            window.location.href = 'https://link-center.net/1193383/floraevolved-key-system-1?token=' + token;
+        });
+
+        // Keyframe animation for progress bar
+        document.styleSheets[0].insertRule('@keyframes load { 100% { width: 100%; } }', 0);
+    </script>
+</body>
+</html>
