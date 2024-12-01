@@ -82,7 +82,8 @@
         // Wait for user to confirm they're not a bot
         document.getElementById('confirmBtn').addEventListener('click', function() {
             // Check if the Cloudflare Turnstile CAPTCHA is completed
-            var turnstileResponse = document.querySelector('[data-turnstile="response"]').value;
+            var turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
+            
             if (!turnstileResponse) {
                 alert('Please confirm that you are not a bot!');
                 return;
