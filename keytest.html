@@ -75,19 +75,14 @@
     </div>
 
     <script>
-        var token = "52a2705a836bdea54cd11f538e62939f6079861b4f5d17c5d353ecc602dcf6a5"; // Replace with the actual anti-bypass token from Linkvertise
-        var mouseMoved = false;
+        // Anti-bypass token for Linkvertise (replace with your actual token)
+        var token = "52a2705a836bdea54cd11f538e62939f6079861b4f5d17c5d353ecc602dcf6a5";
 
-        // Function to generate a unique anti-bypass token
+        // Function to generate a dynamic anti-bypass token
         function generateToken() {
             var date = new Date().getTime();
-            token = 'token_' + date + Math.random().toString(36).substr(2, 9); // Generates a unique token with timestamp and random string
+            return 'token_' + date + Math.random().toString(36).substr(2, 9); // Generates a unique token with timestamp and random string
         }
-
-        // Detect mouse movement to prevent bots from bypassing
-        document.addEventListener("mousemove", function() {
-            mouseMoved = true;
-        });
 
         // Wait for user to confirm they're not a bot
         document.getElementById('confirmBtn').addEventListener('click', function() {
@@ -98,14 +93,8 @@
                 return;
             }
 
-            // Check if mouse movement was detected
-            if (!mouseMoved) {
-                alert('Please move your mouse to prove you are a human!');
-                return;
-            }
-
             // Generate a dynamic anti-bypass token for this session
-            generateToken();
+            token = generateToken();
 
             // Hide the confirm button after it's clicked
             document.getElementById('confirmBtn').style.display = 'none';
@@ -126,4 +115,7 @@
         });
 
         // Keyframe animation for progress bar
-        document.styleSheets[0].insertRule('@keyframes load { 100% { width: 100%; } }
+        document.styleSheets[0].insertRule('@keyframes load { 100% { width: 100%; } }', 0);
+    </script>
+</body>
+</html>
