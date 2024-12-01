@@ -55,19 +55,19 @@
         .btn-confirm:hover {
             background-color: #45a049;
         }
-        .g-recaptcha {
+        .cf-turnstile {
             margin: 20px 0;
         }
     </style>
-    <!-- Load Google reCAPTCHA (optional) -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
     <div class="container">
         <p class="redirect-message">You are being redirected to the next Linkvertise link. Please confirm you're not a bot.</p>
         
-        <!-- Google reCAPTCHA -->
-        <div class="g-recaptcha" data-sitekey="6LdKXY8qAAAAACLfc9DHJHRezcBLYyuV3FqR72vq"></div>
+        <!-- Cloudflare Turnstile CAPTCHA -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAA1Q0n3gEGL09xhp"></div>
         
         <!-- Confirm you're not a bot button -->
         <button class="btn-confirm" id="confirmBtn">Confirm you're not a bot</button>
@@ -81,9 +81,10 @@
     <script>
         // Wait for user to confirm they're not a bot
         document.getElementById('confirmBtn').addEventListener('click', function() {
-            // Check if the reCAPTCHA is completed
-            var recaptchaResponse = grecaptcha.getResponse();
-            if (recaptchaResponse.length === 0) {
+            // Check if the Cloudflare Turnstile CAPTCHA is completed
+            var turnstileResponse = document.querySelector('[name="cf-turnstile-response"]').value;
+            
+            if (!turnstileResponse) {
                 alert('Please confirm that you are not a bot!');
                 return;
             }
@@ -110,4 +111,3 @@
     </script>
 </body>
 </html>
-
