@@ -55,15 +55,19 @@
         .btn-confirm:hover {
             background-color: #45a049;
         }
+        .cf-turnstile {
+            margin: 20px 0;
+        }
     </style>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- Cloudflare Turnstile -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
     <div class="container">
         <p class="redirect-message">You are being redirected to the next Linkvertise link. Please confirm you're not a bot.</p>
         
-        <!-- Google reCAPTCHA -->
-        <div class="g-recaptcha" data-sitekey="6LdKXY8qAAAAACLfc9DHJHRezcBLYyuV3FqR72vq"></div>
+        <!-- Cloudflare Turnstile CAPTCHA -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAA1Q0n3gEGL09xhp"></div>
         
         <!-- Confirm you're not a bot button -->
         <button class="btn-confirm" id="confirmBtn">Confirm you're not a bot</button>
@@ -75,26 +79,14 @@
     </div>
 
     <script>
-        // Anti-bypass token for Linkvertise (replace with your actual token)
-        var token = "52a2705a836bdea54cd11f538e62939f6079861b4f5d17c5d353ecc602dcf6a5";
-
-        // Function to generate a dynamic anti-bypass token
-        function generateToken() {
-            var date = new Date().getTime();
-            return 'token_' + date + Math.random().toString(36).substr(2, 9); // Generates a unique token with timestamp and random string
-        }
-
         // Wait for user to confirm they're not a bot
         document.getElementById('confirmBtn').addEventListener('click', function() {
-            // Check if the reCAPTCHA is completed
-            var recaptchaResponse = grecaptcha.getResponse();
-            if (recaptchaResponse.length === 0) {
+            // Check if the Cloudflare Turnstile CAPTCHA is completed
+            var turnstileResponse = document.querySelector('[data-turnstile="response"]').value;
+            if (!turnstileResponse) {
                 alert('Please confirm that you are not a bot!');
                 return;
             }
-
-            // Generate a dynamic anti-bypass token for this session
-            token = generateToken();
 
             // Hide the confirm button after it's clicked
             document.getElementById('confirmBtn').style.display = 'none';
@@ -107,10 +99,9 @@
             var progressBar = document.querySelector('.loading-bar-inner');
             progressBar.style.animation = 'load 3s linear forwards';
 
-            // Simulate the Linkvertise antibypassing timer (typically 5 seconds or more)
+            // Redirect after 3 seconds
             setTimeout(function() {
-                // After the countdown, redirect the user with the anti-bypass token
-                window.location.href = 'https://link-center.net/1193383/floraevolved-key-system-1?token=' + token;
+                window.location.href = 'https://link-center.net/1193383/floraevolved-key-system-1';
             }, 3000); // Wait for the progress bar to complete
         });
 
