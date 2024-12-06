@@ -3,30 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poke/Nexo</title>
+    <title>Poke/Nexo's Space</title>
     <style>
         /* General Styles */
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #141e30, #243b55);
+            font-family: 'Arial', sans-serif;
             color: white;
             text-align: center;
+            background: radial-gradient(circle, #141e30, #000000);
+            background-image: url('https://source.unsplash.com/1600x900/?space,stars');
+            background-size: cover;
+            background-attachment: fixed;
+            overflow-x: hidden;
         }
 
         header {
-            padding: 50px;
+            padding: 50px 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
         }
 
         header h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 3.5rem;
+            margin-bottom: 15px;
         }
 
         header p {
-            font-size: 1.2rem;
-            opacity: 0.8;
+            font-size: 1.5rem;
+            opacity: 0.9;
         }
 
         /* Button Styles */
@@ -34,48 +39,66 @@
             display: inline-block;
             margin: 20px;
             padding: 15px 30px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             color: white;
             background-color: transparent;
             border: 2px solid #00d4ff;
-            border-radius: 5px;
+            border-radius: 50px;
             text-decoration: none;
             transition: all 0.3s ease;
+            text-shadow: 0 0 10px #00d4ff;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
         }
 
         .btn:hover {
             background-color: #00d4ff;
-            color: #141e30;
+            color: #000000;
             transform: scale(1.1);
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 25px #00d4ff, 0 0 50px rgba(0, 212, 255, 0.8);
         }
 
-        /* Section Hover Effects */
+        /* Section Styling */
         .profile-section {
-            margin: 50px 0;
+            margin: 50px 20px;
             padding: 50px;
-            background-color: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .profile-section:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
         }
 
         footer {
             margin-top: 50px;
             padding: 20px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             opacity: 0.8;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Add Star Animation */
+        @keyframes twinkling {
+            from {
+                background-position: 0 0;
+            }
+            to {
+                background-position: -1000px 1000px;
+            }
+        }
+
+        body {
+            animation: twinkling 100s linear infinite;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Profile</h1>
-        <p>Discover more about me, join my community, or check out my software!</p>
+        <h1>Welcome to Poke/Nexo's Space</h1>
+        <p>Explore the universe of my projects and join my journey!</p>
     </header>
 
     <div class="profile-section">
@@ -95,7 +118,7 @@
     </div>
 
     <footer>
-        &copy; 2024 Poke/Nexo. All Rights Reserved.
+        &copy; 2024 Poke/Nexo. All Rights Reserved. Created in the vastness of space.
     </footer>
 </body>
 </html>
