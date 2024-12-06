@@ -17,6 +17,7 @@
             background-size: cover;
             background-attachment: fixed;
             overflow-x: hidden;
+            height: 100vh; /* Full height */
         }
 
         header {
@@ -93,32 +94,49 @@
         body {
             animation: twinkling 100s linear infinite;
         }
+
+        /* Ensure buttons are centered */
+        .profile-section a {
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Poke/Nexo's Space</h1>
-        <p>Explore the universe of my projects and join my journey!</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Welcome to Poke/Nexo's Space</h1>
+            <p>Explore the universe of my projects and join my journey!</p>
+        </header>
 
-    <div class="profile-section">
-        <h2>Join My Community</h2>
-        <a href="https://discord.gg/getflora" class="btn" target="_blank">Join My Discord Server</a>
-        <a href="https://discord.com/users/1314280038463701104" class="btn" target="_blank">My Discord Profile</a>
+        <div class="profile-section">
+            <h2>Join My Community</h2>
+            <a href="https://discord.gg/getflora" class="btn" target="_blank">Join My Discord Server</a>
+            <a href="https://discord.com/users/1314280038463701104" class="btn" target="_blank">My Discord Profile</a>
+        </div>
+
+        <div class="profile-section">
+            <h2>Check Out My Software</h2>
+            <a href="https://getflora.xyz" class="btn" target="_blank">Visit Flora</a>
+        </div>
+
+        <div class="profile-section">
+            <h2>Follow Me on Roblox</h2>
+            <a href="https://www.roblox.com/users/1314280038463701104/profile" class="btn" target="_blank">My Roblox Profile (FloraExecutorOnTop)</a>
+        </div>
+
+        <footer>
+            &copy; 2024 Poke/Nexo. All Rights Reserved. Created in the vastness of space.
+        </footer>
     </div>
-
-    <div class="profile-section">
-        <h2>Check Out My Software</h2>
-        <a href="https://getflora.xyz" class="btn" target="_blank">Visit Flora</a>
-    </div>
-
-    <div class="profile-section">
-        <h2>Follow Me on Roblox</h2>
-        <a href="https://www.roblox.com/users/1314280038463701104/profile" class="btn" target="_blank">My Roblox Profile (FloraExecutorOnTop)</a>
-    </div>
-
-    <footer>
-        &copy; 2024 Poke/Nexo. All Rights Reserved. Created in the vastness of space.
-    </footer>
 </body>
 </html>
