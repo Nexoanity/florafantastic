@@ -1,0 +1,33 @@
+a{
+    font-size: 4em;
+    font-weight: bold;
+    color: #564DD5;
+    font-family: sans-serif;
+    text-decoration: none;
+    background: linear-gradient(#000000, #000000) repeat-x #fff;
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-size: auto;
+    background-size: 200% 100%;
+    background-position-x: 0;
+    background-position-y: 2em;
+    transition: background-position-y 0.7s ease;
+    animation: waveAnimation 4s infinite linear;
+    animation-play-state: running;
+    animation-play-state: paused;
+}
+
+a:hover{
+    background-position-x: 0;
+    background-position-y: 0;
+    animation-play-state: running;
+}
+
+@keyframes waveAnimation{
+    from {
+        background-position-x: 0%;
+    }
+    to {
+        background-position-x: 200%;
+    }
+}
