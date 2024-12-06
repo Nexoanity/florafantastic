@@ -12,12 +12,10 @@
             font-family: 'Arial', sans-serif;
             color: white;
             text-align: center;
-            background: radial-gradient(circle, #141e30, #000000);
-            background-image: url('https://source.unsplash.com/1600x900/?space,stars');
+            background: url('https://cdn.wallpapersafari.com/22/20/bBLrr9.jpg') no-repeat center center fixed;
             background-size: cover;
-            background-position: center center;
-            background-attachment: fixed;
-            height: 100vh; /* Full height */
+            height: 100%;
+            overflow-x: hidden;
         }
 
         header {
@@ -81,32 +79,12 @@
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
         }
 
-        /* Add Star Animation */
-        @keyframes twinkling {
-            from {
-                background-position: 0 0;
-            }
-            to {
-                background-position: -1000px 1000px;
-            }
-        }
-
-        body {
-            animation: twinkling 100s linear infinite;
-        }
-
-        /* Ensure buttons are centered */
-        .profile-section a {
-            display: inline-block;
-            margin: 10px;
-        }
-
+        /* Center Content */
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100%;
             text-align: center;
         }
     </style>
