@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Appeal a Ban</title>
+  <title>Ban Appeal | Flora</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="images/Flora.ico" type="image/x-icon">
   <style>
     body {
@@ -18,10 +17,29 @@
       background-color: #333;
       color: #fff;
       padding: 10px 20px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    header h1 {
+    header .logo img {
+      height: 40px;
+    }
+    header .navbar ul {
+      list-style: none;
+      padding: 0;
       margin: 0;
+      display: flex;
+    }
+    header .navbar ul li {
+      margin: 0 10px;
+    }
+    header .navbar ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    header .navbar ul li a:hover {
+      text-decoration: underline;
     }
     .container {
       max-width: 600px;
@@ -63,13 +81,31 @@
     .form-group button:hover {
       background-color: #0056b3;
     }
+    footer {
+      text-align: center;
+      padding: 10px;
+      background-color: #333;
+      color: #fff;
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>Appeal a Discord Ban</h1>
+    <div class="logo">
+      <img src="images/Flora_Logo.png" alt="Flora Logo">
+    </div>
+    <nav class="navbar">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="appeal.html">Appeal</a></li>
+      </ul>
+    </nav>
   </header>
   <div class="container">
+    <h2>Appeal a Ban</h2>
+    <p>Fill out the form below to appeal a ban from our Discord server.</p>
     <form id="appealForm">
       <div class="form-group">
         <label for="username">Your Discord Username (with tag):</label>
@@ -88,7 +124,9 @@
       </div>
     </form>
   </div>
-
+  <footer>
+    <p>&copy; 2024 Flora. All rights reserved.</p>
+  </footer>
   <script>
     document.getElementById('appealForm').addEventListener('submit', function(e) {
       e.preventDefault();
