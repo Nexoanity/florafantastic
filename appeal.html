@@ -12,59 +12,79 @@
       padding: 0;
       background: url('images/Flora_Background.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #333;
+      color: #f1f1f1;
+      box-sizing: border-box;
     }
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 10px 20px;
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     .navbar a {
       text-decoration: none;
-      color: #333;
-      margin: 0 10px;
-      font-weight: bold;
+      color: #fff;
+      margin: 0 15px;
+      font-weight: 600;
+      transition: color 0.3s ease;
     }
     .navbar a:hover {
-      color: #007BFF;
+      color: #00bcd4;
     }
     .form-container {
       max-width: 600px;
       margin: 50px auto;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
     h1 {
       text-align: center;
       margin-bottom: 20px;
+      font-size: 2rem;
+      color: #fff;
     }
     label {
-      font-weight: bold;
+      font-weight: 500;
       display: block;
       margin: 10px 0 5px;
+      color: #fff;
     }
     input, textarea, button {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #00bcd4;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    input:focus, textarea:focus {
+      border-color: #00bcd4;
+      outline: none;
+      background: rgba(0, 0, 0, 0.7);
     }
     button {
-      background-color: #007BFF;
-      color: white;
-      font-size: 16px;
+      background-color: #00bcd4;
+      color: #fff;
+      font-size: 1.1rem;
       font-weight: bold;
       cursor: pointer;
       border: none;
+      transition: background-color 0.3s ease;
     }
     button:hover {
-      background-color: #0056b3;
+      background-color: #0097a7;
+    }
+    button:active {
+      background-color: #00838f;
     }
   </style>
 </head>
@@ -74,7 +94,6 @@
     <div>
       <a href="index.html">Home</a>
       <a href="terms.html">Terms</a>
-      <a href="changelog.html">Changelog</a>
     </div>
   </div>
 
@@ -115,7 +134,42 @@
       };
 
       const payload = {
-        content: `**Ban Appeal Submitted:**\n\n**Username:** ${formData.username}\n**Date of Ban:** ${formData.banDate}\n**Reason for Ban:** ${formData.banReason}\n**Appeal Reason:** ${formData.appealReason}\n**Additional Information:** ${formData.additionalInfo}`,
+        embeds: [
+          {
+            title: "Ban Appeal Submitted",
+            color: 3066993,
+            fields: [
+              {
+                name: "Username",
+                value: formData.username,
+                inline: true,
+              },
+              {
+                name: "Date of Ban",
+                value: formData.banDate,
+                inline: true,
+              },
+              {
+                name: "Reason for Ban",
+                value: formData.banReason,
+                inline: false,
+              },
+              {
+                name: "Appeal Reason",
+                value: formData.appealReason,
+                inline: false,
+              },
+              {
+                name: "Additional Information",
+                value: formData.additionalInfo,
+                inline: false,
+              }
+            ],
+            footer: {
+              text: 'Ban Appeal Form - Flora Community',
+            },
+          },
+        ],
       };
 
       try {
