@@ -71,6 +71,10 @@
       outline: none;
       background: rgba(0, 0, 0, 0.7);
     }
+    input:hover, textarea:hover, button:hover {
+      border-color: #00bcd4;
+      background: rgba(0, 0, 0, 0.9);
+    }
     button {
       background-color: #00bcd4;
       color: #fff;
@@ -78,13 +82,15 @@
       font-weight: bold;
       cursor: pointer;
       border: none;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
     button:hover {
       background-color: #0097a7;
+      transform: scale(1.05);
     }
     button:active {
       background-color: #00838f;
+      transform: scale(0.98);
     }
   </style>
 </head>
