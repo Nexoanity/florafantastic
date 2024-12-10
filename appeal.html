@@ -81,14 +81,20 @@
   <div class="form-container">
     <h1>Ban Appeal Form</h1>
     <form id="banAppealForm">
-      <label for="username">Discord Username:</label>
-      <input type="text" id="username" name="username" placeholder="Your Discord username" required>
+      <label for="username">Discord Username (e.g., User#1234):</label>
+      <input type="text" id="username" name="username" placeholder="Enter your Discord username" required>
 
-      <label for="reason">Reason for Ban:</label>
-      <textarea id="reason" name="reason" rows="4" placeholder="Why were you banned?" required></textarea>
+      <label for="ban-date">Approximate Date of Ban:</label>
+      <input type="date" id="ban-date" name="ban-date" required>
 
-      <label for="appeal">Appeal Message:</label>
-      <textarea id="appeal" name="appeal" rows="6" placeholder="Why should the ban be lifted?" required></textarea>
+      <label for="ban-reason">Why do you think you were banned?</label>
+      <textarea id="ban-reason" name="ban-reason" rows="4" placeholder="Explain why you believe you were banned" required></textarea>
+
+      <label for="appeal-reason">Why should the ban be lifted?</label>
+      <textarea id="appeal-reason" name="appeal-reason" rows="6" placeholder="Provide a reason for lifting the ban" required></textarea>
+
+      <label for="additional-info">Additional Information (Optional):</label>
+      <textarea id="additional-info" name="additional-info" rows="4" placeholder="Any extra details you'd like to add"></textarea>
 
       <button type="submit">Submit Appeal</button>
     </form>
@@ -102,12 +108,14 @@
       const webhookUrl = 'https://discord.com/api/webhooks/1316066799514816603/9Eh8HkefqRnCjUIfjlzUSVPDPKt_v0bfu4GbiJUS7jMLT93Fx1S4KejHkqVC0sY_bRev';
       const formData = {
         username: form.username.value,
-        reason: form.reason.value,
-        appeal: form.appeal.value,
+        banDate: form['ban-date'].value,
+        banReason: form['ban-reason'].value,
+        appealReason: form['appeal-reason'].value,
+        additionalInfo: form['additional-info'].value || 'N/A',
       };
 
       const payload = {
-        content: `**Ban Appeal Submitted:**\n\n**Username:** ${formData.username}\n**Reason for Ban:** ${formData.reason}\n**Appeal Message:** ${formData.appeal}`,
+        content: `**Ban Appeal Submitted:**\n\n**Username:** ${formData.username}\n**Date of Ban:** ${formData.banDate}\n**Reason for Ban:** ${formData.banReason}\n**Appeal Reason:** ${formData.appealReason}\n**Additional Information:** ${formData.additionalInfo}`,
       };
 
       try {
