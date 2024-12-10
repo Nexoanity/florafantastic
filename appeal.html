@@ -3,165 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ban Appeal | Flora</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="icon" href="images/Flora.ico" type="image/x-icon">
+  <title>Ban Appeal</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
   <style>
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f9;
+      background: url('images/Flora_Background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
     }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 10px 20px;
+    .navbar {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
-    header .logo img {
-      height: 40px;
-    }
-    header .navbar ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-    }
-    header .navbar ul li {
-      margin: 0 10px;
-    }
-    header .navbar ul li a {
-      color: #fff;
+    .navbar a {
       text-decoration: none;
+      color: #333;
+      margin: 0 10px;
       font-weight: bold;
     }
-    header .navbar ul li a:hover {
-      text-decoration: underline;
+    .navbar a:hover {
+      color: #007BFF;
     }
-    .container {
+    .form-container {
       max-width: 600px;
-      margin: 20px auto;
-      background: #fff;
-      border-radius: 8px;
+      margin: 50px auto;
+      background: rgba(255, 255, 255, 0.9);
       padding: 20px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    .form-group {
-      margin-bottom: 15px;
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
     }
-    .form-group label {
-      display: block;
+    label {
       font-weight: bold;
-      margin-bottom: 5px;
+      display: block;
+      margin: 10px 0 5px;
     }
-    .form-group input,
-    .form-group textarea {
+    input, textarea, button {
       width: 100%;
       padding: 10px;
+      margin-bottom: 15px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 4px;
     }
-    .form-group textarea {
-      resize: vertical;
-      min-height: 100px;
-    }
-    .form-group button {
-      width: 100%;
-      padding: 10px;
+    button {
       background-color: #007BFF;
       color: white;
-      border: none;
-      border-radius: 5px;
       font-size: 16px;
+      font-weight: bold;
       cursor: pointer;
+      border: none;
     }
-    .form-group button:hover {
+    button:hover {
       background-color: #0056b3;
-    }
-    footer {
-      text-align: center;
-      padding: 10px;
-      background-color: #333;
-      color: #fff;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <img src="images/Flora_Logo.png" alt="Flora Logo">
+  <div class="navbar">
+    <div><strong>Flora</strong></div>
+    <div>
+      <a href="index.html">Home</a>
+      <a href="terms.html">Terms</a>
+      <a href="changelog.html">Changelog</a>
     </div>
-    <nav class="navbar">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="terms.html">Terms</a></li>
-        <li><a href="changelog.html">Changelog</a></li>
-        <li><a href="appeal.html">Appeal</a></li>
-      </ul>
-    </nav>
-  </header>
-  <div class="container">
-    <h2>Appeal a Ban</h2>
-    <p>Fill out the form below to appeal a ban from our Discord server.</p>
-    <form id="appealForm">
-      <div class="form-group">
-        <label for="username">Your Discord Username (with tag):</label>
-        <input type="text" id="username" name="username" placeholder="Example#1234" required>
-      </div>
-      <div class="form-group">
-        <label for="reason">Reason for Ban:</label>
-        <textarea id="reason" name="reason" placeholder="Explain why you were banned." required></textarea>
-      </div>
-      <div class="form-group">
-        <label for="appeal">Why should we unban you?</label>
-        <textarea id="appeal" name="appeal" placeholder="Explain why you should be unbanned." required></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit">Submit Appeal</button>
-      </div>
+  </div>
+
+  <div class="form-container">
+    <h1>Ban Appeal Form</h1>
+    <form id="banAppealForm">
+      <label for="username">Discord Username:</label>
+      <input type="text" id="username" name="username" placeholder="Your Discord username" required>
+
+      <label for="reason">Reason for Ban:</label>
+      <textarea id="reason" name="reason" rows="4" placeholder="Why were you banned?" required></textarea>
+
+      <label for="appeal">Appeal Message:</label>
+      <textarea id="appeal" name="appeal" rows="6" placeholder="Why should the ban be lifted?" required></textarea>
+
+      <button type="submit">Submit Appeal</button>
     </form>
   </div>
-  <footer>
-    <p>&copy; 2024 Flora. All rights reserved.</p>
-  </footer>
+
   <script>
-    document.getElementById('appealForm').addEventListener('submit', function(e) {
+    const form = document.getElementById('banAppealForm');
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const username = document.getElementById('username').value;
-      const reason = document.getElementById('reason').value;
-      const appeal = document.getElementById('appeal').value;
+      const webhookUrl = 'https://discord.com/api/webhooks/1316066799514816603/9Eh8HkefqRnCjUIfjlzUSVPDPKt_v0bfu4GbiJUS7jMLT93Fx1S4KejHkqVC0sY_bRev';
+      const formData = {
+        username: form.username.value,
+        reason: form.reason.value,
+        appeal: form.appeal.value,
+      };
 
-      fetch('https://discord.com/api/webhooks/1316066799514816603/9Eh8HkefqRnCjUIfjlzUSVPDPKt_v0bfu4GbiJUS7jMLT93Fx1S4KejHkqVC0sY_bRev', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          content: null,
-          embeds: [
-            {
-              title: "New Ban Appeal",
-              color: 3447003,
-              fields: [
-                { name: "Discord Username", value: username },
-                { name: "Reason for Ban", value: reason },
-                { name: "Appeal Message", value: appeal }
-              ]
-            }
-          ]
-        })
-      }).then(response => {
-        if (response.ok) {
-          alert('Your appeal has been submitted successfully!');
-          document.getElementById('appealForm').reset();
-        } else {
-          alert('Failed to submit appeal. Please try again later.');
-        }
-      }).catch(error => {
-        alert('Error submitting appeal: ' + error);
-      });
+      const payload = {
+        content: `**Ban Appeal Submitted:**\n\n**Username:** ${formData.username}\n**Reason for Ban:** ${formData.reason}\n**Appeal Message:** ${formData.appeal}`,
+      };
+
+      try {
+        await fetch(webhookUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+        alert('Appeal submitted successfully!');
+        form.reset();
+      } catch (error) {
+        console.error('Error submitting appeal:', error);
+        alert('There was an error submitting your appeal.');
+      }
     });
   </script>
 </body>
